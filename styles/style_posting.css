@@ -1,0 +1,533 @@
+/* Root variables for theme colors */
+:root {
+    --primary-color: #6441a5; /* Twitter blue */
+    --text-color: #0f1419; /* Dark text for light mode */
+    --volver-color: #22d4fd; /* Respetando los colores previos */
+    --bg-color: #ffffff; /* White background for light mode */
+    --sidebar-bg: #f7f9fa; /* Light grey for sidebar in light mode */
+    --border-color: #e1e8ed; /* Light grey border */
+    --secondary-text: #536471; /* Secondary text color */
+    --hover-color: #e8f5fe; /* Light blue on hover */
+    --tweet-bg: #ffffff; /* White background for tweets */
+    --modal-bg: rgba(0, 0, 0, 0.5); /* Semi-transparent black for modal background */
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+    --primary-color: #6441a5;
+    --text-color: #e7e9ea; /* Light text for dark mode */
+    --bg-color: #16161d; /* Black background for dark mode */
+    --sidebar-bg: #16181c; /* Dark grey for sidebar in dark mode */
+    --border-color: #2f3336; /* Darker grey border */
+    --secondary-text: #71767b;
+    --hover-color: #181919; /* Very dark grey on hover */
+    --tweet-bg: #16181c; /* Dark grey background for tweets */
+    --modal-bg: rgba(91, 112, 131, 0.4); /* Slightly different semi-transparent grey for dark mode modal */
+}
+
+/* Global reset and font styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Body styling, applies background and text color based on theme */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
+}
+
+/* Main container for the layout */
+.container {
+    display: flex;
+    min-height: 100vh; /* Minimum height to fill viewport */
+    position: relative;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s;
+    position: sticky; /* Makes sidebar sticky */
+    top: 0;
+    height: 100vh; /* Occupies full height */
+    overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+/* Main content area styling */
+.main-content {
+    flex: 1; /* Takes remaining space */
+    max-width: 600px; /* Max width for content */
+    border-right: 1px solid var(--border-color);
+}
+
+/* Profile section styling in sidebar */
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.profile-pic-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+#profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Makes it circular */
+    object-fit: cover; /* Ensures image covers the area */
+}
+
+/* Style for change profile picture button */
+#change-profile-pic {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#profile-name {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* General edit button style */
+.edit-btn {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+    background-color: var(--hover-color);
+}
+
+/* Bio section styling */
+.bio-section {
+    margin-bottom: 30px;
+}
+
+#user-bio {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#user-handle, #follower-count {
+    color: var(--secondary-text);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Navigation menu styling */
+.nav-menu ul {
+    list-style: none; /* Removes bullet points */
+}
+
+.nav-menu li {
+    margin-bottom: 10px;
+}
+
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+
+.nav-menu a:hover {
+    background-color: var(--hover-color);
+}
+
+.nav-menu i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.fas .volver {
+    color: var(--volver-color);
+}
+
+.nav-menu .active a {
+    color: var(--primary-color); /* Active tab color */
+}
+
+/* Theme toggle switch styling */
+.theme-toggle {
+    margin-top: auto; /* Pushes the toggle to the bottom */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px; /* Rounded slider */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%; /* Circular handle */
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Header styling in main content */
+.header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* Cover photo container styling */
+.cover-photo-container {
+    position: relative;
+    height: 200px;
+    width: 100%;
+}
+
+#cover-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area */
+}
+
+/* Style for change cover photo button */
+#change-cover-photo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+/* Compose tweet section styling */
+.compose-tweet {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.compose-header {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#compose-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+#tweet-text {
+    flex: 1;
+    border: none;
+    resize: none; /* Disables manual resizing by user */
+    font-size: 16px;
+    background-color: transparent;
+    color: var(--text-color);
+    outline: none; /* Removes outline on focus */
+    padding: 10px;
+    min-height: 50px;
+    max-height: 150px; /* Limits max height for the textarea */
+    overflow-y: auto; /* Adds scrollbar if content exceeds max-height */
+}
+
+.compose-footer {
+    display: flex;
+    justify-content: flex-end; /* Move button to the right */
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* .image-upload and #image-count styles are no longer needed for tweets,
+   but kept here if they were used elsewhere or for future potential use. */
+.image-upload {
+    display: flex;
+    align-items: center;
+}
+
+.image-upload label {
+    color: var(--primary-color);
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.image-upload input {
+    display: none; /* Hides the default file input */
+}
+
+#image-count {
+    color: var(--secondary-text);
+    font-size: 14px;
+}
+
+/* Tweet button styling */
+#tweet-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.5; /* Disabled state */
+    transition: opacity 0.2s;
+}
+
+#tweet-button.active {
+    opacity: 1; /* Active state */
+}
+
+/* Tweets container styling */
+.tweets-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Individual tweet styling */
+.tweet {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--tweet-bg);
+}
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tweet-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.tweet-user-info {
+    flex: 1;
+}
+
+.tweet-username {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.tweet-handle {
+    color: var(--secondary-text);
+}
+
+.tweet-time { /* Style for timestamp */
+    color: var(--secondary-text);
+    font-size: 14px;
+}
+
+.tweet-content {
+    margin-bottom: 10px;
+    line-height: 1.4;
+    word-wrap: break-word; /* Ensures long words break to prevent overflow */
+}
+
+/* Styling for tweet images (kept for reference, but no longer used by JS for tweets) */
+.tweet-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive grid for images */
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.tweet-image {
+    width: 100%;
+    max-height: 200px; /* Limits max height for individual tweet images */
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Modal general styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-bg);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* Bio textarea in modal */
+#bio-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 10px;
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+/* Save bio button in modal */
+#save-bio-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Image in preview modal */
+#modal-image {
+    max-width: 100%;
+    max-height: 80vh;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stacks sidebar and main content vertically */
+    }
+
+    .sidebar {
+        width: 100%; /* Sidebar takes full width */
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        height: auto; /* Auto height for content */
+        position: static; /* Removes sticky behavior for mobile */
+    }
+
+    .main-content {
+        max-width: 100%; /* Main content takes full width */
+    }
+
+    /* Adjustments for image grid in tweets on smaller screens */
+    .tweet-images {
+        grid-template-columns: 1fr; /* Single column for images */
+    }
+
+    .tweet-images img {
+        max-height: 250px; /* Adjust max height for single column images */
+    }
+}
+
+/* Styles for tweet delete button */
+.tweet-actions {
+    display: flex;
+    justify-content: flex-end; /* Aligns button to the right */
+    margin-top: 10px;
+}
+
+.delete-tweet-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-text);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.delete-tweet-btn:hover {
+    color: #f4212e; /* Twitter red for delete action */
+}
+
+.delete-tweet-btn i {
+    margin-right: 0; /* Ensures the icon is not pushed by margin from non-existent text */
+}

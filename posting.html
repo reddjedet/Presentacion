@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter-like Blog</title>
+    <!-- Link to the CSS file for styling -->
+    <link rel="stylesheet" href="./styles/style_posting.css" />
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar for profile information and navigation -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-pic-container">
+                    <!-- Profile picture, with a placeholder if none is set -->
+                    <img id="profile-pic" src="https://placehold.co/150x150/cccccc/333333?text=Profile"
+                        alt="Profile Picture">
+                    <!-- Button to change profile picture -->
+                    <button id="change-profile-pic" class="edit-btn"><i class="fas fa-camera"></i></button>
+                </div>
+                <!-- User's profile name -->
+                <h2 id="profile-name">Nombre de Perfil</h2>
+                <!-- Button to edit the user's bio -->
+                <button id="edit-bio-btn" class="edit-btn">Editar Bio</button>
+            </div>
+
+            <!-- Section for user's bio and handle -->
+            <div class="bio-section">
+                <p id="user-bio">Tu Bio Aquí.</p>
+                <p id="user-handle">@UsuarioEjemplo</p>
+                <!-- MODIFICACIÓN: Se cambió "0 Seguidores" a "0 visitas" -->
+                <p id="follower-count">0 visitas</p>
+            </div>
+
+            <!-- Navigation menu -->
+            <nav class="nav-menu">
+                <ul>
+                    <!-- GitHub link -->
+                    <li><a href="https://github.com" target="_blank" rel="noopener noreferrer"><i
+                                class="fab fa-github"></i> GitHub</a></li>
+                    <!-- LinkedIn link -->
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i
+                                class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <!-- Volver link -->
+                    <li class="volver"><a href="./index.html" target="_blank" rel="noopener noreferrer"><i
+                                class="fas fa-arrow-left"></i> Volver</a></li>
+                </ul>
+            </nav>
+
+            <!-- Theme toggle (Dark/Light Mode) -->
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span id="theme-label">Modo Oscuro</span>
+            </div>
+        </aside>
+
+        <!-- Main content area for the blog posts -->
+        <main class="main-content">
+            <div class="header">
+                <h1>Inicio</h1>
+            </div>
+
+            <!-- Cover photo section -->
+            <div class="cover-photo-container">
+                <!-- Cover photo, with a placeholder if none is set -->
+                <img id="cover-photo" src="https://placehold.co/800x200/cccccc/333333?text=Cover" alt="Cover Photo">
+                <!-- Button to change cover photo -->
+                <button id="change-cover-photo" class="edit-btn"><i class="fas fa-camera"></i></button>
+            </div>
+
+            <!-- Compose new tweet/comment section -->
+            <div class="compose-tweet">
+                <div class="compose-header">
+                    <!-- Profile picture for the compose area -->
+                    <img id="compose-profile-pic" src="https://placehold.co/50x50/cccccc/333333?text=Profile"
+                        alt="Profile Picture">
+                    <!-- Textarea for writing comments -->
+                    <textarea id="tweet-text" placeholder="¿Qué está pasando?" rows="3"></textarea>
+                </div>
+                <div class="compose-footer">
+                    <!-- Se ha eliminado el div 'image-upload' y el 'preview-images' -->
+                    <button id="tweet-button">Publicar</button>
+                </div>
+            </div>
+
+            <!-- Container where tweets/comments will be dynamically added -->
+            <div class="tweets-container" id="tweets-container">
+                <!-- Tweets will be added here dynamically -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Bio Edit Modal -->
+    <div class="modal" id="bio-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Editar Bio</h2>
+            <textarea id="bio-textarea" rows="4"></textarea>
+            <button id="save-bio-btn">Guardar</button>
+        </div>
+    </div>
+
+    <!-- Image Preview Modal (still needed for profile/cover photo previews if clicked) -->
+    <div class="modal" id="image-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img id="modal-image" src="" alt="Preview">
+        </div>
+    </div>
+
+    <!-- Link to the JavaScript file for interactivity -->
+    <script src="script.js"></script>
+</body>
+
+</html>
