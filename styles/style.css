@@ -1,0 +1,183 @@
+/* 
+https://app.aluracursos.com/course/html-css-desarrollo-estructura-archivos-tags/task/87291 
+https://www.aluracursos.com/blog/reset-css-que-es-ejemplos-como-crear-y-utilizar 
+Actividades: 
+https://app.aluracursos.com/course/html-css-clases-posicionamiento-flexbox/task/87426
+https://app.aluracursos.com/course/html-css-clases-posicionamiento-flexbox/task/87427
+
+justify-content y align-items son las responsables del espaciado de los elementos hijos en un contenedor Flexbox. 
+justify-content alinea los elementos horizontalmente, mientras que align-items los alinea verticalmente
+
+Actividades css
+https://app.aluracursos.com/course/html-css-header-footer-variables-css/task/87667
+https://app.aluracursos.com/course/html-css-header-footer-variables-css/task/87668
+https://app.aluracursos.com/course/html-css-header-footer-variables-css/task/87669
+
+Media queries
+https://app.aluracursos.com/course/html-css-trabajando-responsividad-publicacion-proyectos/task/87710
+https://app.aluracursos.com/course/html-css-trabajando-responsividad-publicacion-proyectos/task/87711
+
+Ctrl + D = Cambia todos los textos similares
+*/
+
+
+/* Importación de fuente */
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+:root {
+    --color-primario: #2F3061;
+    --color-secundario: #DFDFDF;
+    --color-terciario: #22d4fd;
+    --color-resaltado: #ff0000;
+    --color-hover: #272727;
+
+    --fuente-montserrat: 'Montserrat', sans serif;
+    --fuente-krona: 'Krona One', sans serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+
+}
+
+body {
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    box-sizing: border-box;
+    /* Para que padding y border no afecten al ancho total */
+}
+
+header {
+    padding: 2% 0% 0% 15%;
+
+}
+
+.header__menu {
+    display: flex;
+    gap: 80px;
+}
+
+.header__menu__link {
+    font-family: var(--fuente-montserrat);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-terciario);
+    text-decoration: none;
+}
+
+/*
+img {
+    max-width: 30%;
+    height: auto;
+}
+*/
+
+.presentacion {
+    display: flex;
+    align-items: center;
+    padding: 6% 15%;
+    justify-content: space-between;
+    gap: 82px;
+}
+
+.presentacion__contenido {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    /* Espacio entre contenido y circundantes */
+}
+
+.titulo-destaque {
+    color: var(--color-resaltado);
+}
+
+.presentacion__contenido__titulo {
+    font-size: 2.25rem;
+    font-family: var(--fuente-krona);
+}
+
+.presentacion__contenido__texto {
+    font-size: 1.5rem;
+    font-family: var(--fuente-montserrat);
+}
+
+.presentacion__contenido__texto a {
+    text-decoration: none;
+    color: var(--color-terciario);
+}
+
+.presentacion__enlaces {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.presentacion__enalces_subtitulo {
+    font-family: var(--fuente-krona);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.presentacion__enlaces__link {
+    width: 50%;
+    text-align: center;
+    border-radius: 8px;
+    padding: 21.5px 0;
+    font-family: var(--fuente-montserrat);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-secundario);
+    border: 2px solid var(--color-terciario);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.presentacion__enlaces__link:hover {
+    background-color: var(--color-hover); /* Es adicional */
+    border-color: var(--color-secundario);
+    cursor: pointer;
+}
+
+.presentacion__imagen {
+    width: 50%;
+}   
+
+.footer {
+    background-color: var(--color-terciario);
+    padding: 1.5rem;
+    color: var(--color-primario);
+    text-align: center;
+    font-family: var(--fuente-montserrat);
+    font-size: 24px;
+    font-weight: 400;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .presentacion {
+        flex-direction: column-reverse;
+        padding: 5%;
+    }
+
+    .presentacion__contenido {
+        width: auto;
+    }
+
+    header {
+        padding: 10%;
+    }
+
+    .header__menu {
+        justify-content: center;
+    }
+}
