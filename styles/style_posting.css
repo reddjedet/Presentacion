@@ -172,7 +172,7 @@ body {
     font-size: 20px;
 }
 
-.fas .volver {
+.fa-arrow-left {
     color: var(--volver-color);
 }
 
